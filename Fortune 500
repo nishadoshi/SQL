@@ -107,7 +107,7 @@ AND healthcare_benefits=1
 ;
 
 
-# Which industry has the least revenue 
+#5 Which industry makes the least revenue 
 
 SELECT industry,
 ROUND(AVG(revenue),2) AS avg_revenue
