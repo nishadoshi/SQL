@@ -63,18 +63,27 @@ VALUES
 
 QUERIES 
 
-#1 
+#1  Average revenue of each industry 
+
+ SELECT industry, 
+  AVG(revenue) AS average_revenue 
+  FROM fortune_companies
+  GROUP BY industry
+  ORDER BY average_revenue DESC 
+
+
+#2 Which companies in the healthcare field provide good maternity leave? 
+
 SELECT
-  industry,
-  COUNT(*) AS company_count
-FROM
-  fortune_companies
-GROUP BY
-  CASE
-    WHEN industry = 'Technology' AND revenue > 100000 THEN 'Technology (High Revenue)'
-    WHEN industry = 'Technology' AND revenue <= 100000 THEN 'Technology (Low Revenue)'
-    ELSE 'Other'
-  END;
+company_name,
+CASE 
+  WHEN maternity_leave_weeks >= 10 THEN 'mother friendly workplace'
+  WHEN maternity_leave_weeks >= 8 THEN 'acceptable'
+  ELSE 'abysmal'
+END as mother_friendliness
+FROM fortune_companies
+WHERE industry='Healthcare'
+;
 
 
-#2  
+#3 
