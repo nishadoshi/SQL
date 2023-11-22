@@ -82,8 +82,19 @@ CASE
   ELSE 'abysmal'
 END as mother_friendliness
 FROM fortune_companies
-WHERE industry='Healthcare'
-;
+WHERE industry='Healthcare';
 
 
-#3 
+#3 Which companies in tech, have high revenue and low revenue
+
+SELECT company_name,
+AVG(revenue) AS average_revenue,
+  CASE
+    WHEN AVG(revenue) > 200 THEN 'Technology (High Revenue)'
+    WHEN AVG(revenue) <= 200 THEN 'Technology (Low Revenue)'
+    ELSE 'Other'
+  END as revenue_tech
+FROM fortune_companies
+WHERE industry = 'Technology'
+GROUP BY company_name;
+  
