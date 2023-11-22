@@ -73,7 +73,6 @@ GROUP BY
   CASE
     WHEN industry = 'Technology' AND revenue > 100000 THEN 'Technology (High Revenue)'
     WHEN industry = 'Technology' AND revenue <= 100000 THEN 'Technology (Low Revenue)'
-    WHEN industry = 'RETAIL' AND revenue < 100000 THEN 'Retail (Low Revenue)'
     ELSE 'Other'
   END;
 
