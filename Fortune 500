@@ -97,4 +97,23 @@ AVG(revenue) AS average_revenue,
 FROM fortune_companies
 WHERE industry = 'Technology'
 GROUP BY company_name;
+
+
+#4 Which companies have healthcare benefits *and* at least 20 paid time off days?
+SELECT company_name
+FROM fortune_companies
+WHERE paid_time_off_days>20
+AND healthcare_benefits=1
+;
+
+
+# Which industry has the least revenue 
+
+SELECT industry,
+ROUND(AVG(revenue),2) AS avg_revenue
+FROM fortune_companies
+GROUP BY industry
+ORDER BY avg_revenue
+LIMIT 1;
+
   
